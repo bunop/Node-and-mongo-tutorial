@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  node:
+    image: "node:13.8"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    command: "npm start"
+
+  mongo:
+    image: "mongo:4.2"
+    restart: always
+    expose:
+      - "27017"
+    volumes:
+    - data-volume:/data/db
+
+volumes:
+  data-volume:

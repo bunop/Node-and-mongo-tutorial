@@ -1,5 +1,5 @@
 var mongoose    =   require("mongoose");
-mongoose.connect('mongodb://localhost:27017/demoDb');
+mongoose.connect('mongodb://mongo:27017/demoDb');
 var mongoSchema =   mongoose.Schema;
 var userSchema  = {
     "userEmail" : String,
